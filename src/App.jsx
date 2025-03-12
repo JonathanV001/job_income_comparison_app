@@ -96,7 +96,8 @@ function App() {
 }
 
   //selecting 
-  //useeffect for form input changing
+  //useselector hook to select city by id in the normalized state
+  //the option tag has the id attribute as the city's id in the state
   const selectedCity1 = useSelector(state => selectCityById(state, city1))
   const selectedCity2 = useSelector(state => selectCityById(state, city2))
 
@@ -170,38 +171,24 @@ function App() {
           <label for="JobOneSalary" class="block text-xl text-purple-500">Job One Salary:</label>
           <input type="number" name="JobOneSalary" class="h-1/12 w-4/5 border-2 border-purple-500 text-purple-500" onChange={handleSalary1Change}/>
           <select name="JobOneState" class="h-1/12 w-4/5 border-2 border-purple-500 text-purple-500" onChange={handleCity1Change}>
+            <option disabled selected value> -- select an option -- </option>
             {content}
           </select>
 
           <label for="JobTwoSalary" class="block text-xl text-blue-400">Job One Salary:</label>
           <input type="number" name="JobTwoSalary" class="h-1/12 w-4/5 border-2 border-blue-400 text-blue-400" onChange={handleSalary2Change}/>
           <select name="JobTwoState" class="h-1/12 w-4/5 border-2 border-blue-400 text-blue-400" onChange={handleCity2Change}>
+            <option disabled selected value> -- select an option -- </option>
             {content}
           </select>
 
-          <div class="h-1/12 w-4/5 bg-gradient-to-r from-blue-500 to-purple-500" onClick={doTest}>
+          <div class="h-1/12 w-4/5 bg-gradient-to-r from-blue-500 to-purple-500 hover:border-2 hover:border-b-black flex justify-center items-center" onClick={doTest}>
+            <h1 class="text-xl text-white">Compare</h1>
           </div>
-
-          {/* message displayed if job one gives a higher standard if living*/}
-          <h1 class="text-xl m-4">
-            <p class="text-purple-500 text-xl inline">Job One </p> 
-            gives a 
-            <p class="text-purple-500 text-xl inline"> 50% </p> 
-            higher standard of living than 
-            <p class="text-blue-400 text-xl inline"> Job Two</p></h1>
-
-          {/* message displayed if job one gives a higher standard if living*/}
-            <h1 class="text-xl m-4 hidden">
-            <p class="text-blue-400 text-xl inline">Job Two </p> 
-            gives a 
-            <p class="text-blue-400 text-xl inline"> 50% </p> 
-            higher standard of living than 
-            <p class="text-purple-500 text-xl inline"> Job One</p></h1>
-          
         </form>
       </div>
       {message}
-      {jsoncontent}
+      {/*{jsoncontent}*/}
     </>
   )
 }
